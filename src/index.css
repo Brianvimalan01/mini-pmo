@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-red: var(--red);
+  --color-red-soft: var(--red-soft);
+  --radius-card: 8px;
+}
+
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --sunken: #f4f4f5;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --ink: #18181b;
+  --muted: #52525b;
+  --faint: #a1a1aa;
+  --accent: #4f46e5;
+  --accent-ink: #ffffff;
+  --accent-soft: #eef2ff;
+  --green: #15803d;
+  --green-soft: #dcfce7;
+  --amber: #b45309;
+  --amber-soft: #fef3c7;
+  --red: #b91c1c;
+  --red-soft: #fee2e2;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0b0d;
+  --surface: #151518;
+  --sunken: #1c1c20;
+  --line: #2a2a30;
+  --line-strong: #3a3a42;
+  --ink: #f4f4f5;
+  --muted: #a1a1aa;
+  --faint: #71717a;
+  --accent: #818cf8;
+  --accent-ink: #0b0b0d;
+  --accent-soft: #1e1b4b;
+  --green: #4ade80;
+  --green-soft: #14532d;
+  --amber: #fbbf24;
+  --amber-soft: #451a03;
+  --red: #f87171;
+  --red-soft: #450a0a;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+/* Print: only the report sheet. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  body {
+    background: #fff;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-sheet {
+    box-shadow: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  .print-break {
+    break-inside: avoid;
+  }
+}
+
+@media print {
+  html,
+  body,
+  #root,
+  main {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}

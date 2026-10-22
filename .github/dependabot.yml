@@ -1,0 +1,14 @@
+# Monthly, grouped dependency updates (one PR per ecosystem).
+# Each PR is built and tested by the deploy workflow before you merge it.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule: { interval: monthly }
+    groups:
+      all-npm: { patterns: ["*"] }
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: monthly }
+    groups:
+      all-actions: { patterns: ["*"] }
