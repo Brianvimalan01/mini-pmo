@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { HashRouter, Route, Routes } from "react-router";
 import { ActivityPanel } from "./components/ActivityPanel";
 import { AppProvider } from "./components/AppContext";
 import { Shell } from "./components/Shell";
 import { useAutoBackup, useProgressRecorder } from "./hooks/useBackground";
+import { seedDemoProjectsOnce } from "./lib/demo";
 import { MyTasksPage } from "./pages/MyTasksPage";
 import { NewProjectPage } from "./pages/NewProjectPage";
 import { PortfolioPage } from "./pages/PortfolioPage";
@@ -18,6 +20,9 @@ import { SettingsPage } from "./pages/SettingsPage";
 function Background() {
   useAutoBackup();
   useProgressRecorder();
+  useEffect(() => {
+    void seedDemoProjectsOnce();
+  }, []);
   return null;
 }
 

@@ -10,6 +10,7 @@ import { isBackupConfigured, runBackup } from "../hooks/useBackground";
 import { buildDownload, parseDownload, restoreFiles } from "../lib/backup";
 import { formatDateTime, todayISO } from "../lib/dates";
 import { listCommits, readBackupAt, repoInfo, type CommitSummary, type RepoConfig } from "../lib/github";
+import { addDemoProjects } from "../lib/demo";
 import { createSampleProject } from "../lib/sample";
 
 export function SettingsPage() {
@@ -264,6 +265,20 @@ export function SettingsPage() {
           }
         >
           Add sample project
+        </Button>
+      </Card>
+
+      <Card title="Demo projects">
+        <p className="mb-3 text-sm text-muted">Two fictional projects (an ERP build and an asset management system) with full timelines, milestones and RAID logs. Your own projects are kept.</p>
+        <Button
+          onClick={() =>
+            run("demo", async () => {
+              const added = await addDemoProjects();
+              notify(added ? `Added ${added} demo project${added === 1 ? "" : "s"}` : "Demo projects are already here");
+            })
+          }
+        >
+          Add demo projects
         </Button>
       </Card>
     </div>
